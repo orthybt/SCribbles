@@ -1,20 +1,51 @@
-// Press Shift twice to open the Search Everywhere dialog and type `show
-// whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
 public class Main {
 	public static void main(String[] args) {
-		// Press Alt+Enter with your caret at the highlighted text to see how
-		// IntelliJ IDEA suggests fixing it.
-		System.out.printf("Hello and welcome!");
+		// Initial planned movements
+		double initialBuccal = 1.0;
+		double initialMesial = 1.4;
+		double initialLingual = -0.9;
+		double initialTorque = 2.5;
+		double initialTip = 1.5;
+		double initialRotation = 5.0;
+		double initialDistal = 0.6;
 
-		// Press Shift+F10 or click the green arrow button in the gutter to
-		// run the code.
-		for (int i = 1; i <= 5; i++) {
+		// Reactionary movements
+		double buccalReactionary = initialBuccal * 0.02; // 2% of buccal
+		double mesialReactionary = initialMesial * 0.1; // 10% of mesial
+		double lingualReactionary = initialLingual * 0.02; // 2% of lingual
+		double distalReactionary = initialDistal * 0.1; // 10% of distal
 
-			// Press Shift+F9 to start debugging your code. We have set one
-			// breakpoint
-			// for you, but you can always add more by pressing Ctrl+F8.
-			System.out.println("i = " + i);
-		}
+		// Final tooth position
+		double finalBuccal =
+				Math.round
+						((initialBuccal + buccalReactionary) * 100.0) / 100.0;
+		double finalMesial =
+				Math.round
+						((initialMesial + mesialReactionary) * 100.0) / 100.0;
+		double finalLingual =
+				Math.round
+						((initialLingual + lingualReactionary) * 100.0) / 100.0;
+		double finalDistal =
+				Math.round
+						((initialDistal + distalReactionary) * 100.0) / 100.0;
+		double finalTorque =
+				Math.round
+						((initialTorque + buccalReactionary - lingualReactionary) * 100.0) / 100.0;
+		double finalTip =
+				Math.round
+						((initialTip + mesialReactionary - distalReactionary) * 100.0) / 100.0;
+		double finalRotation =
+				Math.round
+						((initialRotation + mesialReactionary - distalReactionary) * 100.0) / 100.0;
+
+		// Print final tooth position
+		System.out.println("Final Tooth Position:");
+		System.out.println("Buccal: " + finalBuccal + " mm");
+		System.out.println("Mesial: " + finalMesial + " mm");
+		System.out.println("Lingual: " + finalLingual + " mm");
+		System.out.println("Distal: " + finalDistal + " mm");
+		System.out.println("Torque: " + finalTorque + " degrees");
+		System.out.println("Tip: " + finalTip + " degrees");
+		System.out.println("Rotation: " + finalRotation + " degrees");
 	}
 }
